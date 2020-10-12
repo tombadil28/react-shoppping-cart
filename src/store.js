@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, compose, combineReducers} from "redux";
 import thunk from "redux-thunk";
 /* thunk macht async mögliche für redux */
-import {productReducer, productsReducer} from "./reducers/productReducers"; 
+import {productsReducer} from "./reducers/productReducers"; 
 
 const initialState ={};
 const composeEnhancer = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;

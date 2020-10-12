@@ -1,5 +1,5 @@
 import React from 'react';
-import data from "./data.json";
+/*import data from "./data.json"; */
 import Products from './components/Products';
 import Filter from './components/Filter';
 import Cart from './components/Cart';
@@ -11,12 +11,10 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      products: data.products,
       cartItems: localStorage.getItem("cartItems") ? 
       JSON.parse(localStorage.getItem("cartItems"))
       : [] ,
-      size: "",
-      sort: "",
+     
          };
   }
    createOrder = (order) => {
@@ -50,7 +48,7 @@ class App extends React.Component {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   };
   
- 
+ /* Seid redux ist es in productactions.js
   sortProducts = (event) => {
     const sort = event.target.value;
     this.setState((state) => ({
@@ -85,7 +83,7 @@ class App extends React.Component {
     }
 
   };
-
+ */
   render() {
     return (
       <Provider store={store}>
@@ -96,14 +94,10 @@ class App extends React.Component {
         <main>
           <div className="content">
             <div className="main">
-              <Filter count={this.state.products.length}
-                size={this.state.size}
-                sort={this.state.sort}
-                filterProducts={this.filterProducts}
-                sortProducts={this.sortProducts}>
-              </Filter>
-              <Products 
-              products={this.state.products}
+              <Filter> </Filter>
+              
+              <Products
+                          
               addToCart={this.addToCart}>  
               </Products>
             </div>
@@ -127,3 +121,14 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+/*  div <filter> count={this.state.products.length}
+                size={this.state.size}
+                sort={this.state.sort}
+                filterProducts={this.filterProducts}
+                sortProducts={this.sortProducts} 
+                
+ div  <products>  products={this.state.products}
+                
+                */

@@ -33,8 +33,8 @@ this.setState({product:null});
             <div>
                 <Fade bottom cascade>
                     {!this.props.products ? (
-                    <div>Loading...</div>) : 
-                    (
+                    <div>Loading ...</div> 
+                    ) : (
 
                     
                 <ul className="products">
@@ -49,7 +49,7 @@ this.setState({product:null});
                             </a>
                          <div className="product-price">
                              <div>
-                                 {formatCurrency(product.price) }
+                                € { (product.price) }
                              </div>
                              
                              <button onClick={() => this.props.addToCart(product)} className="button primary"> 
@@ -90,7 +90,7 @@ this.setState({product:null});
                                 ))}
                             </p>
                             <div className="product-price">
-                                <div>{formatCurrency(product.price)}</div>
+                                <div> {formatCurrency(product.price)}</div>
                                 <button className="button primary" onClick ={()=>{
                                  this.props.addToCart(product);
                                  this.closeModal();   
@@ -106,4 +106,4 @@ this.setState({product:null});
     }
 }
 
-export default connect((state)=> ({products: state.products.items}), {fetchProducts, })(Products);
+export default connect((state)=> ({products: state.products.filteredItems}), {fetchProducts, })(Products);
