@@ -5,7 +5,8 @@ import Modal from 'react-modal'
 /* Modal fenster: in der Mitte vom Screen */
 import Zoom from 'react-reveal/Zoom'
 import { connect } from 'react-redux'
-import {fetchProducts} from "../actions/productsActions"
+import {fetchProducts} from '../actions/productsActions'
+import {addToCart} from '../actions/cartActions'
 
 
 
@@ -52,7 +53,12 @@ this.setState({product:null});
                                 € { (product.price) }
                              </div>
                              
-                             <button onClick={() => this.props.addToCart(product)} className="button primary"> 
+                             <button 
+                             className="button primary"
+                                 onClick={() => {this.props.addToCart(product);
+                                    this.closeModal();
+                    }}  
+                      >  
                              Add to Cart</button>
                              </div>       
                         </div>
@@ -106,4 +112,5 @@ this.setState({product:null});
     }
 }
 
-export default connect((state)=> ({products: state.products.filteredItems}), {fetchProducts, })(Products);
+export default connect((state)=> ({products: state.products.filteredItems}), 
+{fetchProducts, addToCart, })(Products);
